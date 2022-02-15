@@ -35,8 +35,8 @@ class Usuario {
 }
 
 const user = new Usuario(
+  "Felipe",
   "Lorenzo",
-  "Sosa",
   [
     { nameBook: "Homo Deus", autor: "Yuval Harari" },
     { nameBook: "Rayuela", autor: "Julio Cortazar" },
