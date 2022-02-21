@@ -1,7 +1,5 @@
 const fs = require("fs");
 
-//const ruta = "/DesafioClase4/archivo.text";
-
 const objProducto1 = {
   title: "Escuadras",
   price: 123.5,
@@ -20,12 +18,6 @@ const objProducto3 = {
   thumbnail:
     "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
 };
-const objProducto4 = {
-  title: "Lapicera",
-  price: 123.45,
-  thumbnail:
-    "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-};
 
 class Contenedor {
   constructor(archivo) {
@@ -34,10 +26,14 @@ class Contenedor {
     this.id = 0;
   }
   async save(producto) {
+    /* ----------------------------- leo el archivo ----------------------------- */
     await this.getAll();
     this.id++;
+    /* ------------------------ agrego el Object al array ----------------------- */
     this.datos.push({ ...producto, id: this.id });
     try {
+      /* ------------------ guardo el nuevo Object en el archivos ----------------- */
+      /* -------- podria haber usado un fs.appendFile, pero bueno deje asi -------- */
       await fs.promises.writeFile(
         this.archivo,
         JSON.stringify(this.datos, null, 2)
@@ -48,14 +44,17 @@ class Contenedor {
   }
 
   async getById(id) {
+    /* ------------------------------- traigo todo ------------------------------ */
     await this.getAll();
     try {
-      if (this.datos.find((prod) => prod.id === id)) {
+      if (this.datos) {
+        /* ------- aca hago el la busqueda del dato q coindide con el param id ------ */
         const pd = this.datos.find((prod) => prod.id === id);
-        console.log("Producto encontrado");
+        /* -------------------------- si se cumple muestro -------------------------- */
+        console.log("Producto encontrado:\n ");
         console.log(pd);
       } else {
-        console.log(`No se encuentra el pd con id: ${id}`);
+        console.log(`No se encuentra el producto con id: ${id}`);
       }
     } catch (error) {
       console.log(error);
@@ -64,40 +63,80 @@ class Contenedor {
 
   async getAll() {
     try {
+      /* ----------------------------- leo el archivo ----------------------------- */
       const data = await fs.promises.readFile(this.archivo, "utf-8");
       if (data) {
+        /* ----------- si data tiene info parseo y hago un map de la info ----------- */
+        /* -- ese mismo map me sirve luego para agregar nuevo sin q se pise la info -- */
         this.datos = JSON.parse(data);
         this.datos.map((producto) => {
           if (this.id < producto.id) this.id = producto.id;
         });
-        // console.log(this.datos);
         return this.datos;
       }
     } catch (e) {
-      console.log("hubo un error: " + e);
+      console.log("error: " + e);
     }
   }
 
-  deleteById(id) {}
+  async deleteById(id) {
+    /* ------------------------------ Traigo todos ------------------------------ */
+    await this.getAll();
+    try {
+      /* ------------------ filtro todos aquellos q no coindidan ------------------ */
+      const data = this.datos.filter((producto) => producto.id !== id);
+      /* -------- pregunto si se cumple el filtrado, es decir si hay datos -------- */
+      if (data) {
+        /* -------------- entonces escribo en el archivo el nuevo array ------------- */
+        await fs.promises.writeFile(
+          this.archivo,
+          JSON.stringify(data, null, 2)
+        );
+        /* ---------------------------- muestro x consola --------------------------- */
+        console.log(data);
+      }
+    } catch (error) {
+      console.log("Error al eliminar; " + error);
+    }
+  }
 
-  deleteAll() {}
+  async deleteAll() {
+    try {
+      /* --------------------- elimino el archivo directamente -------------------- */
+      await fs.promises.unlink(this.archivo);
+      console.log("Archivo eliminado");
+    } catch (error) {
+      console.log("Error al elimanr el archivo " + error);
+    }
+  }
 }
 
-const c = new Contenedor("archivo.text");
+const c = new Contenedor("Producto.txt");
 
 function guardarProducto() {
   c.save(objProducto1);
   c.save(objProducto2);
   c.save(objProducto3);
-  c.save(objProducto4);
 }
 
-function ObtenerTodos() {
-  c.getAll();
-}
 function ObtenerId(id) {
   c.getById(id);
 }
-ObtenerId(1);
+
+async function ObtenerTodos() {
+  console.log(await c.getAll());
+}
+
+function BorrarId(id) {
+  c.deleteById(id);
+}
+function BorrarTodo() {
+  c.deleteAll();
+}
+
 //guardarProducto();
+
+ObtenerId(1);
 //ObtenerTodos();
+//BorrarId(2);
+//BorrarTodo();
