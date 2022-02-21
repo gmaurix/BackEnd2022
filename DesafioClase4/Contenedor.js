@@ -32,8 +32,8 @@ class Contenedor {
     /* ------------------------ agrego el Object al array ----------------------- */
     this.datos.push({ ...producto, id: this.id });
     try {
-      /* ------------------ guardo el nuevo Object en el archivos ----------------- */
-      /* -------- podria haber usado un fs.appendFile, pero bueno deje asi -------- */
+      /* ------------------ guardo el nuevo Object en el archivo ----------------- */
+      /* -------- podria haber usado un appendFile, pero bueno lo deje asi -------- */
       await fs.promises.writeFile(
         this.archivo,
         JSON.stringify(this.datos, null, 2)
@@ -48,7 +48,7 @@ class Contenedor {
     await this.getAll();
     try {
       if (this.datos) {
-        /* ------- aca hago el la busqueda del dato q coindide con el param id ------ */
+        /* ------- Hago la busqueda del dato q coincida con el id pasado por param ------ */
         const pd = this.datos.find((prod) => prod.id === id);
         /* -------------------------- si se cumple muestro -------------------------- */
         console.log("Producto encontrado:\n ");
@@ -67,7 +67,7 @@ class Contenedor {
       const data = await fs.promises.readFile(this.archivo, "utf-8");
       if (data) {
         /* ----------- si data tiene info parseo y hago un map de la info ----------- */
-        /* -- ese mismo map me sirve luego para agregar nuevo sin q se pise la info -- */
+        /* -- ese mismo map me sirve luego para agregar nuevo Objeto sin pisar la info q ya tengo xq uso WriteFile en lugar de append... -- */
         this.datos = JSON.parse(data);
         this.datos.map((producto) => {
           if (this.id < producto.id) this.id = producto.id;
@@ -83,7 +83,7 @@ class Contenedor {
     /* ------------------------------ Traigo todos ------------------------------ */
     await this.getAll();
     try {
-      /* ------------------ filtro todos aquellos q no coindidan ------------------ */
+      /* ------------------ filtro todos aquellos q no coincidan ------------------ */
       const data = this.datos.filter((producto) => producto.id !== id);
       /* -------- pregunto si se cumple el filtrado, es decir si hay datos -------- */
       if (data) {
@@ -102,7 +102,7 @@ class Contenedor {
 
   async deleteAll() {
     try {
-      /* --------------------- elimino el archivo directamente -------------------- */
+      /* ---------------------Acá elimino el archivo directamente -------------------- */
       await fs.promises.unlink(this.archivo);
       console.log("Archivo eliminado");
     } catch (error) {
