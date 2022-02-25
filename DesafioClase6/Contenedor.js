@@ -19,14 +19,7 @@ const objProducto3 = {
     "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
 };
 
-const objProducto4 = {
-  title: "Goma.",
-  price: 123.45,
-  thumbnail:
-    "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-};
-
-class Contenedor {
+module.exports = class Contenedor {
   constructor(archivo) {
     this.archivo = archivo;
     this.datos = [];
@@ -58,8 +51,7 @@ class Contenedor {
       const pd = this.datos.find((prod) => prod.id === id);
       if (pd) {
         /* -------------------------- si se cumple muestro -------------------------- */
-        console.log("Producto encontrado:\n ");
-        console.log(pd);
+        return pd;
       } else {
         console.log(`No se encuentra el producto con id: ${id}`);
       }
@@ -100,7 +92,7 @@ class Contenedor {
           JSON.stringify(data, null, 2)
         );
         /* ---------------------------- muestro x consola --------------------------- */
-        console.log(data);
+        return data;
       }
     } catch (error) {
       console.log("Error al eliminar; " + error);
@@ -111,14 +103,14 @@ class Contenedor {
     try {
       /* ---------------------Acá elimino el archivo directamente -------------------- */
       await fs.promises.unlink(this.archivo);
-      console.log("Archivo eliminado");
+      return "Archivo eliminado";
     } catch (error) {
       console.log("Error al elimanr el archivo " + error);
     }
   }
-}
+};
 
-const c = new Contenedor("Producto.txt");
+//const c = new Contenedor("Producto.txt");
 
 function guardarProducto() {
   c.save(objProducto4);
@@ -138,10 +130,3 @@ function BorrarId(id) {
 function BorrarTodo() {
   c.deleteAll();
 }
-
-guardarProducto();
-
-//ObtenerId(55);
-//ObtenerTodos();
-//BorrarId(8);
-//BorrarTodo();
