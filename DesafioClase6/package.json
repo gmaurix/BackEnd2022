@@ -1,23 +1,18 @@
 {
-  "name": "desafioclase4",
+  "name": "desafioclase6",
   "version": "1.0.0",
   "description": "",
   "main": "Contenedor.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon --inspect Contenedor.js"
+    "start": "node desafioClase6.js",
+    "dev":"nodemon --inspect desafioClase6.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-<<<<<<< HEAD
-    
-=======
-    "npm": "^8.5.1"
-  },
   "devDependencies": {
+    "express": "^4.17.3",
     "nodemon": "^2.0.15"
->>>>>>> 5355ca432018cd0d1e18068598b1abd017f29cf7
   }
 }
