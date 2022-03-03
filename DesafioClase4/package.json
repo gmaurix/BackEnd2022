@@ -4,12 +4,13 @@
   "description": "",
   "main": "Contenedor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon --inspect Contenedor.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "npm": "^8.5.1"
+    
   }
 }
