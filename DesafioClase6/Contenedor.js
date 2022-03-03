@@ -53,7 +53,7 @@ module.exports = class Contenedor {
         /* -------------------------- si se cumple muestro -------------------------- */
         return pd;
       } else {
-        console.log(`No se encuentra el producto con id: ${id}`);
+        return(`No se encuentra el producto con id: ${id}`);
       }
     } catch (error) {
       console.log(error);
