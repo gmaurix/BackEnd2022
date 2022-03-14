@@ -1,24 +1,5 @@
 const fs = require("fs");
 
-const objProducto1 = {
-  title: "Escuadras",
-  price: 123.5,
-  thumbnail:
-    "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-};
-const objProducto2 = {
-  title: "Calculadora",
-  price: 123.45,
-  thumbnail:
-    "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-};
-const objProducto3 = {
-  title: "Globo T.",
-  price: 123.45,
-  thumbnail:
-    "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
-};
-
 module.exports = class Contenedor {
   constructor(archivo) {
     this.archivo = archivo;
@@ -30,7 +11,7 @@ module.exports = class Contenedor {
     await this.getAll();
     this.id++;
     /* ------------------------ agrego el Object al array ----------------------- */
-    this.datos.push({ ...producto, id: this.id });
+    this.datos.push({ ...producto, id });
     try {
       /* ------------------ guardo el nuevo Object en el archivo ----------------- */
       /* -------- podria haber usado un appendFile, pero bueno lo deje asi -------- */
@@ -77,6 +58,38 @@ module.exports = class Contenedor {
     } catch (e) {
       console.log("error: " + e);
     }
+  }
+
+  async updateById(id, pdActualizar) {
+    let lista = await this.getAll();
+    try {
+      /* ---------------------- busco el indice del producto ---------------------- */
+      const indice = this.datos.findIndex((x) => x.id == id);
+      let prod = lista[indice];
+
+      if (prod) {
+        const { title, price, thumbnail } = pdActualizar;
+        prod.title = title;
+        prod.price = price;
+        prod.thumbnail = thumbnail;
+
+        /* ---------------- inserto producto actualizado en la lista ---------------- */
+        lista[indice] = prod;
+
+        try {
+          /* -------------- actualizo el archivo con producto modificado -------------- */
+          await fs.promises.writeFile(
+            this.archivo,
+            JSON.stringify(lista, null, 2)
+          );
+          return lista;
+        } catch (error) {}
+
+        return prod;
+      } else {
+        return { Error: `producto con id:${id} no encontrado` };
+      }
+    } catch (error) {}
   }
 
   async deleteById(id) {

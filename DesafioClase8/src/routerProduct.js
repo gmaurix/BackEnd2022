@@ -41,6 +41,18 @@ routerProduct.post("/", async (req, res) => {
   res.json({ agregado: pdAgregado });
 });
 
+// 4)PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
+routerProduct.put("/:id", async (req, res) => {
+  const {
+    body,
+    params: { id },
+  } = req;
+  const pdAnterior = await productos.getById(parseInt(id));
+  const pdModificado = await productos.updateById(id, body);
+
+  res.json({ pdAnterior, pdModificado });
+});
+
 // 5)DELETE '/api/productos/:id' -> elimina un producto según su id
 
 routerProduct.delete("/:id", async (req, res) => {
@@ -52,7 +64,7 @@ routerProduct.delete("/:id", async (req, res) => {
       const data = await productos.getAll();
       res.json({ eliminado });
     } else {
-      res.json({ error: `producto con id.${id} no encontrado` });
+      res.json({ error: `producto con id:${id} no encontrado` });
     }
   } catch (error) {
     return error.message();
