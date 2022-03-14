@@ -11,9 +11,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+    
+=======
     "npm": "^8.5.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
+>>>>>>> 5355ca432018cd0d1e18068598b1abd017f29cf7
   }
 }
