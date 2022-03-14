@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Escuadras",
+    "price": 123.5,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 123.45,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 2
+  },
+  {
+    "title": "Globo T.",
+    "price": 123.45,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/hand-drawn-doodle-illustrations/1000/location___global_international_globe_earth_planet_search_find_magnifier-1024.png",
+    "id": 3
+  },
+  {
+    "title": "Boli",
+    "price": 90,
+    "thumbnail": "https://www.librerialarubrica.com/wp-content/uploads/2020/03/boligrafo-bic-cristal-1mm-azul-main.jpg",
+    "id": 4
+  }
+]
