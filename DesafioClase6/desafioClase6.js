@@ -4,11 +4,13 @@ const express = require("express");
 
 const app = express();
 
-let PORT = 8080;
+let PORT = 3000;
+
 const server = app.listen(PORT, () => {
-  console.log(`servidor activo escuchando en puerto ${PORT}`);
+  console.log(`Servidor activo escuchando http://localhost:${PORT}/`);
 });
 
+//A get '/productos'
 const pd = new Contenedor("productos.txt");
 
 app.get("/productos", async (req, res) => {
@@ -16,6 +18,7 @@ app.get("/productos", async (req, res) => {
   res.send(datos);
 });
 
+//B get '/productoRandom'
 app.get("/productosRamdon", async (req, res) => {
   const datos = await pd.getAll();
   let _num = Math.floor(Math.random() * datos.length + 1);

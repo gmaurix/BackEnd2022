@@ -33,18 +33,15 @@ class Contenedor {
     this.id = 0;
   }
   async save(producto) {
-    /* ----------------------------- leo el archivo ----------------------------- */
     await this.getAll();
     this.id++;
-    /* ------------------------ agrego el Object al array ----------------------- */
     this.datos.push({ ...producto, id: this.id });
     try {
-      /* ------------------ guardo el nuevo Object en el archivo ----------------- */
-      /* -------- podria haber usado un appendFile, pero bueno lo deje asi -------- */
       await fs.promises.appendFile(
         this.archivo,
         JSON.stringify(this.datos, null, 2)
       );
+      return this.id;
     } catch (error) {
       console.log("No se pudo guardar el producto" + error);
     }
