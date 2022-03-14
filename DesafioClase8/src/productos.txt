@@ -22,5 +22,11 @@
     "price": 90,
     "thumbnail": "https://www.librerialarubrica.com/wp-content/uploads/2020/03/boligrafo-bic-cristal-1mm-azul-main.jpg",
     "id": 4
+  },
+  {
+    "title": "Cartuchera",
+    "price": "290",
+    "thumbnail": "https://m.media-amazon.com/images/I/71nX6Rz-0DL._AC_SX466_.jpg",
+    "id": 5
   }
 ]

@@ -11,7 +11,7 @@ module.exports = class Contenedor {
     await this.getAll();
     this.id++;
     /* ------------------------ agrego el Object al array ----------------------- */
-    this.datos.push({ ...producto, id });
+    this.datos.push({ ...producto, id: this.id });
     try {
       /* ------------------ guardo el nuevo Object en el archivo ----------------- */
       /* -------- podria haber usado un appendFile, pero bueno lo deje asi -------- */
