@@ -22,5 +22,11 @@
     "price": 90,
     "thumbnail": "https://www.librerialarubrica.com/wp-content/uploads/2020/03/boligrafo-bic-cristal-1mm-azul-main.jpg",
     "id": 4
+  },
+  {
+    "title": "Marcador",
+    "price": "390",
+    "thumbnail": "https://www.librerialarubrica.com/wp-content/uploads/2020/03/marcador-pizarra-edding-360-negro-punta-redonda-recargable-main.jpg",
+    "id": 5
   }
 ]
