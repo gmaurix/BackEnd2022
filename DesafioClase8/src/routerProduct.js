@@ -1,4 +1,3 @@
-const { query } = require("express");
 const express = require("express");
 const { Router } = express;
 const routerProduct = Router();
@@ -23,7 +22,7 @@ routerProduct.get("/:id", async (req, res) => {
     if (pd) {
       res.json({ pd });
     } else {
-      res.json({ error: `producto con id.${id} no encontrado` });
+      res.json({ error: `producto con id:${id} no encontrado` });
     }
   } catch (error) {
     return error.message();
@@ -62,7 +61,7 @@ routerProduct.delete("/:id", async (req, res) => {
     if (listado) {
       const eliminado = await productos.deleteById(id);
       const data = await productos.getAll();
-      res.json({ eliminado });
+      res.json({ Resultado: `Producot con id: ${id} eliminado` });
     } else {
       res.json({ error: `producto con id:${id} no encontrado` });
     }
