@@ -61,7 +61,7 @@ routerProduct.delete("/:id", async (req, res) => {
     if (listado) {
       const eliminado = await productos.deleteById(id);
       const data = await productos.getAll();
-      res.json({ Resultado: `Producot con id: ${id} eliminado` });
+      res.json({ Resultado: `Producto con id: ${id} eliminado.`, listado });
     } else {
       res.json({ error: `producto con id:${id} no encontrado` });
     }
