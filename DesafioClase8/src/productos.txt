@@ -16,5 +16,11 @@
     "price": 150,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/hand-drawn-doodle-illustrations/1000/location___global_international_globe_earth_planet_search_find_magnifier-1024.png",
     "id": 3
+  },
+  {
+    "title": "Calculadora samsung",
+    "price": 300,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 5
   }
 ]
