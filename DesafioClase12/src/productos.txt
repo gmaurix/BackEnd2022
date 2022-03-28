@@ -28,5 +28,11 @@
     "price": "200",
     "thumbnail": "https://images.vexels.com/media/users/3/254863/isolated/lists/7244ff4b95fbce00f953018163201f82-escuela-aulaiconos-joven-y-dulce-vinilocolor-cr-10.png",
     "id": 5
+  },
+  {
+    "title": "Cuaderno",
+    "price": "580",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/1508/1508006.png",
+    "id": 6
   }
 ]

@@ -5,18 +5,8 @@
     "fyh": "28/3/2022 12:25:02"
   },
   {
-    "autor": "otro@mail.com",
-    "mensaje": "otro msj",
-    "fyh": "28/3/2022 12:26:07"
-  },
-  {
-    "autor": "kkj",
-    "mensaje": "smsd",
-    "fyh": "28/3/2022 13:53:12"
-  },
-  {
-    "autor": "andre@mail.com",
-    "mensaje": "mesaje andre",
-    "fyh": "28/3/2022 14:05:59"
+    "autor": "diegomauricio@mail.com",
+    "mensaje": "Probando mensaje! ",
+    "fyh": "28/3/2022 14:20:56"
   }
 ]
