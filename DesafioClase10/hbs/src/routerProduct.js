@@ -8,39 +8,23 @@ const Contenedor = require("./Contenedor");
 const productos = new Contenedor("./src/productos.txt");
 
 /* ----------------------------endpoint para las rutas --------------------------------- */
-// 1) /api/prodtuctos -> devuelve lista de productos formato json
+// 1) /api/prodtuctos -> devuelve lista de productos
 routerProduct.get("/", async (req, res) => {
   const pd = await productos.getAll();
-  res.json({ pd });
-});
-// 2) /api/productos/:id -> devuelve un producto según su id. muestra mensaje si no lo existe
-
-routerProduct.get("/:id", async (req, res) => {
-  try {
-    const id = parseInt(req.params.id);
-    const pd = await productos.getById(id);
-    if (pd) {
-      res.json({ pd });
-    } else {
-      res.json({ error: `producto con id:${id} no encontrado` });
-    }
-  } catch (error) {
-    return error.message();
-  }
+  res.render("index.hbs");
 });
 
-// 3) POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.
+// 3) POST '/api/productos' -> recibe y agrega un producto
 
 routerProduct.post("/", async (req, res) => {
   const product = req.body;
-  /* ----------------- agrego nuevo producto y devuelvo si id ----------------- */
+  /* ----------------- agrego nuevo producto ----------------- */
   const id = await productos.save(product);
-  /* con ese id lo busco en el Array y devuelvo la respuesta con dicho producto -------------------- */
-  const pdAgregado = await productos.getById(id);
-  res.json({ agregado: pdAgregado });
+  res.redirect("./src/views/lista.hbs");
 });
 
-// 4)PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
+/*
+ // 4)PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.
 routerProduct.put("/:id", async (req, res) => {
   const {
     body,
@@ -51,10 +35,10 @@ routerProduct.put("/:id", async (req, res) => {
 
   res.json({ pdAnterior, pdModificado });
 });
-
+ */
 // 5)DELETE '/api/productos/:id' -> elimina un producto según su id
 
-routerProduct.delete("/:id", async (req, res) => {
+/* routerProduct.delete("/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const listado = await productos.getById(id);
@@ -69,5 +53,6 @@ routerProduct.delete("/:id", async (req, res) => {
     return error.message();
   }
 });
+ */
 
 module.exports = routerProduct;
