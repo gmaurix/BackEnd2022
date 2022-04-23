@@ -1,0 +1,21 @@
+ <h2 class="mt-1 text-center">Lista de productos</h2>
+ <div class="table-responsive">
+        <div class="jumbotron">        
+        <table id="tabla" class="table table-striped table-sm rounded-2 responsive h-25">
+        
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+            {{#each listaProductos}}
+            <tr>
+                <td>- {{this.title}}</td>
+                <td>$ {{this.price}}</td>
+                <td><img width="60px" src='{{this.thumbnail}}' alt="foto producto" loading="lazy"></td>
+            </tr>
+            {{/each}}
+        </table>
+        </div>
+        
+ </div>

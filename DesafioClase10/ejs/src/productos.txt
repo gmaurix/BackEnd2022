@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Escuadras",
+    "price": 123.5,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 150,
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/4645/4645203.png",
+    "id": 2
+  },
+  {
+    "title": "Globo Terraqueo",
+    "price": 150,
+    "thumbnail": "https://images.vexels.com/media/users/3/207021/isolated/lists/9fd01ff8d90806eafe4f3978c0b95fa5-globo-terraqueo-colorido-trazo-de-icono.png",
+    "id": 3
+  },
+  {
+    "title": "Agenda",
+    "price": "1800",
+    "thumbnail": "https://images.vexels.com/media/users/3/206164/isolated/lists/9c2166c157dce721fdaaeec772e03c0b-icono-de-trazo-de-agenda-rosa.png",
+    "id": 4
+  },
+  {
+    "title": "Tijera",
+    "price": "200",
+    "thumbnail": "https://images.vexels.com/media/users/3/254863/isolated/lists/7244ff4b95fbce00f953018163201f82-escuela-aulaiconos-joven-y-dulce-vinilocolor-cr-10.png",
+    "id": 5
+  },
+  {
+    "title": "Cuaderno",
+    "price": "290",
+    "thumbnail": "https://images.vexels.com/media/users/3/128313/isolated/lists/01fb3e375286d98cbc46c50e917db249-icono-plano-de-cuaderno.png",
+    "id": 6
+  },
+  {
+    "title": "Sacapuntas",
+    "price": "150",
+    "thumbnail": "https://images.vexels.com/media/users/3/205934/isolated/lists/3c2ba5b69d627531c4162a892fb083bd-sacapuntas-azul-plano.png",
+    "id": 7
+  },
+  {
+    "title": "Lapicera",
+    "price": "500",
+    "thumbnail": "https://cdn-icons-png.flaticon.com/512/4833/4833008.png",
+    "id": 8
+  }
+]
